@@ -1,4 +1,4 @@
-This is a very simple template for use with Saussure that utilizes Bootstrap. Fork it, then head on over to (the guides)[https://github.com/perappu/saussure/wiki/1.-Setup-Guide-%E2%80%90-Beginner] to use it!
+This is a very simple template for use with Saussure that utilizes Bootstrap. Fork it, then head on over to [the guides](https://github.com/perappu/saussure/wiki/1.-Setup-Guide-%E2%80%90-Beginner) to use it!
 
 Because it uses Bootstrap, many HTML codes designed for Toyhouse character profiles will work out-of-the-box. There are no external css files, all css is written directly in `_layouts/base.njk` to ensure it works with Saussure previews with minimal effort.
 
