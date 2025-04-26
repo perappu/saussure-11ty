@@ -1,0 +1,45 @@
+---
+layout: base.njk
+---
+
+<div class="row">
+  <div class="col-2">
+  <img src="/assets/images/icons/{{ icon }}" class="img-fluid">
+  </div>
+    <div class="col-10">
+      <h1>{{ name }}</h1>
+      <small>tags: {{ tags }}</small>
+    </div>
+  </div>
+  <hr>
+    <div>
+      {{ content | safe }}
+    </div>
+    <hr>
+      <h3 style="margin-top: 10px;">Literature</h3>
+      {%- for literature in collections.literatures | byCharacter(page.fileSlug) %}
+        {% if loop.first %}
+          <ul>
+          {% endif %}
+          <li>
+            <a href="{{ literature.url }}">{{ literature.data.title }}</a>
+          </li>
+          {% if loop.last %}
+          </ul>
+        {% else %}
+          <hr>
+          {% endif %}
+        {% endfor -%}
+        <hr>
+          <h3>Gallery</h3>
+          {% for image in collections.images | byCharacter(page.fileSlug + '.md') %}
+            {% if loop.first %}
+              <h2>{{ category }}</h2>
+              <div style="display: flex; align-items: flex-start;gap: 10px;">
+              {% endif %}
+              <a href="/images/{{ image.data.title }}">
+                <img src="/images/{{ image.data.file }}" style="max-width: 200px;"></a>
+                {% if loop.last %}
+                </div>
+              {% endif %}
+            {% endfor %}

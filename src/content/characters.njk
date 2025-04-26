@@ -1,0 +1,16 @@
+---
+title: "characters"
+permalink: /characters/
+layout: base.njk
+---
+
+<div class="d-flex">
+  {% for character in collections.characters %}
+    <div class="card text-center">
+      <img class="card-img-top" src="/assets/images/icons/{{ character.data.icon }}" alt="{{character.data.name}}">
+      <div class="card-body">
+        <a class="btn btn-small btn-secondary" href="{{ character.url }}">{{ character.data.name }}</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
