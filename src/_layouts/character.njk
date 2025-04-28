@@ -2,44 +2,51 @@
 layout: base.njk
 ---
 
+<!-- This is the character header -->
 <div class="row">
   <div class="col-2">
-  <img src="/assets/images/icons/{{ icon }}" class="img-fluid">
-  </div>
+    <img src="/assets/images/icons/{{ icon }}" class="img-fluid" alt="{{ name }}"></div>
     <div class="col-10">
       <h1>{{ name }}</h1>
       <small>tags: {{ tags }}</small>
     </div>
   </div>
-  <hr>
-    <div>
-      {{ content | safe }}
-    </div>
-    <hr>
-      <h3 style="margin-top: 10px;">Literature</h3>
-      {%- for literature in collections.literatures | byCharacter(page.fileSlug) %}
-        {% if loop.first %}
-          <ul>
-          {% endif %}
-          <li>
-            <a href="{{ literature.url }}">{{ literature.data.title }}</a>
-          </li>
-          {% if loop.last %}
-          </ul>
-        {% else %}
-          <hr>
-          {% endif %}
-        {% endfor -%}
-        <hr>
-          <h3>Gallery</h3>
-          {% for image in collections.images | byCharacter(page.fileSlug + '.md') %}
-            {% if loop.first %}
-              <h2>{{ category }}</h2>
-              <div style="display: flex; align-items: flex-start;gap: 10px;">
-              {% endif %}
-              <a href="/images/{{ image.data.title }}">
-                <img src="/images/{{ image.data.file }}" style="max-width: 200px;"></a>
-                {% if loop.last %}
-                </div>
-              {% endif %}
-            {% endfor %}
+  <hr/>
+
+<!-- This is where the character "description" goes -->
+  <div>
+    {{ content | safe }}
+  </div>
+  
+  <hr/>
+
+  <!-- The below code searches the literatures by character, then loops through the results and prints them onto the page -->
+  <h3 style="margin-top: 10px;">Literature</h3>
+  {%- for literature in collections.literatures | byCharacter(page.fileSlug) %}
+    {% if loop.first %}
+      <ul>
+      {% endif %}
+      <li>
+        <a href="{{ literature.url }}">{{ literature.data.title }}</a>
+      </li>
+      {% if loop.last %}
+      </ul>
+    {% else %}
+      <hr/>
+    {% endif %}
+  {% endfor -%}
+
+  <hr/>
+
+  <!-- The below code searches the images by character, then loops through the results and prints them onto the page -->
+  <h3>Gallery</h3>
+  {% for image in collections.images | byCharacter(page.fileSlug) %}
+    {% if loop.first %}
+      <div style="display: flex; align-items: flex-start;gap: 10px;">
+      {% endif %}
+      <a href="{{ image.url }}">
+        <img eleventy:widths="200" src="/assets/images/{{ image.data.file }}" alt="{{ image.data.title }}"></a>
+        {% if loop.last %}
+        </div>
+      {% endif %}
+    {% endfor %}

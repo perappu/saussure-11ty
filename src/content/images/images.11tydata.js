@@ -1,6 +1,6 @@
 export default {
 	layout: "image.njk",
-	permalink: function ({ title }) {
-		return `/images/${this.slugify(title)}/`;
+	permalink: function ({ page }) {
+		return `/images/${this.slugify(page.fileSlug, {replacement: '-', lower: true})}/`;
 	},
 };

@@ -1,5 +1,6 @@
 import markdownit from "markdown-it";
 import anchor from "markdown-it-anchor";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 export default async function (eleventyConfig) {
 
@@ -30,8 +31,8 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter('byCharacter', function (collection, character) {
     if (!character) return collection;
     const filtered = collection.filter(item => item.data.character == character).sort((a, b) => {
-      if (a.data.title < b.data.title) return -1;
-      else if (a.data.title > b.data.title) return 1;
+      if (a.data.date < b.data.date) return -1;
+      else if (a.data.date > b.data.date) return 1;
       else return 0;
     })
     return filtered;
@@ -46,6 +47,23 @@ export default async function (eleventyConfig) {
     })
     return filtered;
   });
+
+  //image optimization settings
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+		formats: ["webp", "gif"],
+		widths: ["auto"],
+    sharpOptions: {
+      animated: true,
+    },
+		htmlOptions: {
+			imgAttributes: {
+				loading: "lazy",
+				decoding: "async",
+			},
+			pictureAttributes: {},
+      fallback: "largest",
+		},
+	});
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "/assets" });
 }

@@ -3,10 +3,16 @@ layout: base.njk
 ---
 
 <a href="/characters/{{character}}">back to character</a>
-<h1>{{title}}</h1>
+
 <div style="text-align: center;">
-<img src="/images/{{ file }}" style="max-height: 500px;">
+<!--Increase the value of eleventy:widths if you want to show larger preview of the image -->
+<!-- The 'data-fslightbox' tag is what enables showing the larger image when you click on it-->
+<a data-fslightbox data-type="image" href="/assets/images/{{ file }}">
+<img eleventy:widths="500" src="/assets/images/{{ file }}" alt="{{ title }}">
+</a>
 </div>
-  tags: {{tags}}
-  <br>
-  {{ content | safe }}
+<h3>{{title}}</h3>
+tags: {{tags}}
+
+<!--This shows the description of the image-->
+{{ content | safe }}
