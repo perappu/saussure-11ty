@@ -6,7 +6,7 @@ layout: base.njk
 
 <p>You can put some extra blurb here if you want, in the file content/characters.njk! Or delete this text too.</p>
 
-<!-- Don't touch the below unless you know what you're doing! -->
+<!-- The below loops through a list of all your characters -->
 <div class="d-flex">
   {% for character in collections.characters %}
     <div class="card text-center">
