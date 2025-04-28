@@ -8,7 +8,7 @@ This template is extremely minimal:
 - It utilizes [fslightbox](https://fslightbox.com) for the fullsize "enlarge" effect on images.
 - [@11ty/eleventy-img](https://www.11ty.dev/docs/plugins/image/) is utilized to optimize/create thumbnail images on character and image pages.
 
-You may view a demo of the site here.
+You may view a demo of what the site looks like [here](https://saussure-test.vercel.app/).
 
 If you would like to demo the template locally:
 1. Clone your forked repository using your favorite git client, whether that is the command line, Sourcetree, GitHub desktop, etc
